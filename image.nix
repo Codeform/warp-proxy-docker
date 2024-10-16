@@ -10,8 +10,8 @@
       ${lib.getExe pkgs.wgcf} register --accept-tos
       ${lib.getExe pkgs.wgcf} generate
       echo '[Socks5]' >> wgcf-profile.conf
-      echo 'BindAddress = 127.0.0.1:25555' >> wgcf-profile.conf
-      ${lib.getExe pkgs.wireproxy} -c wgcf-profile.conf -i 127.0.0.1:25556
+      echo 'BindAddress = 0.0.0.0:25555' >> wgcf-profile.conf
+      ${lib.getExe pkgs.wireproxy} -c wgcf-profile.conf -i 0.0.0.0:25556
     '';
   healthcheckScript =
     pkgs.writeScriptBin "healthcheck"
