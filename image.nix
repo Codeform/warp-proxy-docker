@@ -18,7 +18,7 @@
     ''
     '';
 in
-  pkgs.dockerTools.buildLayeredImage {
+  pkgs.dockerTools.streamLayeredImage {
     name = "warp-proxy";
     tag = "lastest";
 
