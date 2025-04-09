@@ -20,7 +20,7 @@
 in
   pkgs.dockerTools.streamLayeredImage {
     name = "warp-proxy";
-    tag = "lastest";
+    tag = "main";
 
     contents = [
       pkgs.dockerTools.caCertificates
