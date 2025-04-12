@@ -13,7 +13,7 @@
     pkgs.writeScriptBin "healthcheck"
     ''
       #!/bin/sh
-      curl --socks5 localhost:25555 -fsS "https://cloudflare.com/cdn-cgi/trace" | grep -qE "warp=(plus|on)"
+      HTTPS_PROXY=socks5://localhost:25555 wgcf trace | grep -qE "warp=(plus|on)"
     '';
 in
   pkgs.dockerTools.streamLayeredImage {
@@ -21,9 +21,7 @@ in
     tag = "main";
 
     contents = [
-      pkgs.coreutils
       pkgs.busybox
-      pkgs.curlMinimal
       pkgs.dockerTools.caCertificates
       pkgs.wgcf
       pkgs.wireproxy

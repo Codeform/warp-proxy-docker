@@ -17,7 +17,7 @@
       pkgs.writeShellScript "main"
       ''
         ${imagePkg} | ${pkgs.lib.getExe pkgs.podman} load
-        ${pkgs.lib.getExe pkgs.podman} run --rm -it -p 0.0.0.0:25555-25556:25555-25556 localhost/warp-proxy:main
+        ${pkgs.lib.getExe pkgs.podman} run --rm -it -p 0.0.0.0:25555-25556:25555-25556 --name warp localhost/warp-proxy:main
       '';
   in {
     packages.${system} = {default = imagePkg;};
